@@ -1,5 +1,5 @@
 function Far() {
-    let texture = PIXI.Texture.fromImage("resources/parallax-scroller/bg-far.png");
+    let texture = PIXI.Texture.fromImage("resources/background/bg-far.png");
 
     PIXI.extras.TilingSprite.call(this, texture, 512, 256);
 

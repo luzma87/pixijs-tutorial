@@ -1,5 +1,5 @@
 function Mid() {
-    let texture = PIXI.Texture.fromImage("resources/parallax-scroller/bg-mid.png");
+    let texture = PIXI.Texture.fromImage("resources/background/bg-mid.png");
 
     PIXI.extras.TilingSprite.call(this, texture, 512, 256);
 
