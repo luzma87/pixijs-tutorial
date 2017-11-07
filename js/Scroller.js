@@ -5,6 +5,9 @@ function Scroller(stage) {
     this.mid = new Mid();
     stage.addChild(this.mid);
 
+    this.front = new Walls();
+    stage.addChild(this.front);
+
     this.viewportX = 0;
 }
 
@@ -18,7 +21,7 @@ Scroller.prototype.getViewportX = function () {
     return this.viewportX;
 };
 
-Scroller.prototype.moveViewportXBy = function(units) {
-    var newViewportX = this.viewportX + units;
+Scroller.prototype.moveViewportXBy = function (units) {
+    let newViewportX = this.viewportX + units;
     this.setViewportX(newViewportX);
 };
