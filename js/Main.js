@@ -3,17 +3,32 @@ function Main() {
     this.renderer = PIXI.autoDetectRenderer(
         512,
         384,
-        {view: document.getElementById("game-canvas")}
+        {view : document.getElementById("game-canvas")}
     );
+
+    this.scrollSpeed = Main.MIN_SCROLL_SPEED;
+
     this.loadSpriteSheet();
 }
 
-Main.SCROLL_SPEED = 5;
+Main.MIN_SCROLL_SPEED = 5;
+Main.MAX_SCROLL_SPEED = 5;
+Main.SCROLL_ACCELERATION = 0.005;
 
 Main.prototype.update = function () {
-    this.scroller.moveViewportXBy(Main.SCROLL_SPEED);
+    this.scroller.moveViewportXBy(this.scrollSpeed);
+
+    this.speedMeUp();
+
     this.renderer.render(this.stage);
     requestAnimationFrame(this.update.bind(this));
+};
+
+Main.prototype.speedMeUp = function () {
+    this.scrollSpeed += Main.SCROLL_ACCELERATION;
+    if (this.scrollSpeed > Main.MAX_SCROLL_SPEED) {
+        this.scrollSpeed = Main.MAX_SCROLL_SPEED;
+    }
 };
 
 Main.prototype.loadSpriteSheet = function () {
