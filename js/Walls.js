@@ -5,7 +5,6 @@ function Walls() {
     this.createLookupTables();
 
     this.slices = [];
-    this.createTestMap();
 
     this.viewportX = 0;
     this.viewportSliceX = 0;
@@ -33,7 +32,7 @@ Walls.prototype.addSlice = function (sliceType, y) {
 
 Walls.prototype.checkViewportXBounds = function (viewportX) {
     let maxViewportX = (this.slices.length - Walls.VIEWPORT_NUM_SLICES) *
-        WallSlice.WIDTH;
+                       WallSlice.WIDTH;
     if (viewportX < 0) {
         viewportX = 0;
     }
@@ -102,40 +101,3 @@ Walls.prototype.borrowWallSprite = function (sliceType) {
 Walls.prototype.returnWallSprite = function (sliceType, sliceSprite) {
     return this.returnWallSpriteLookup[sliceType].call(this.pool, sliceSprite);
 };
-
-
-Walls.prototype.createTestWallSpan = function () {
-    this.addSlice(SliceType.FRONT, 192);
-    this.addSlice(SliceType.WINDOW, 192);
-    this.addSlice(SliceType.DECORATION, 192);
-    this.addSlice(SliceType.WINDOW, 192);
-    this.addSlice(SliceType.DECORATION, 192);
-    this.addSlice(SliceType.WINDOW, 192);
-    this.addSlice(SliceType.DECORATION, 192);
-    this.addSlice(SliceType.WINDOW, 192);
-    this.addSlice(SliceType.BACK, 192);
-};
-
-Walls.prototype.createTestSteppedWallSpan = function () {
-    this.addSlice(SliceType.FRONT, 192);
-    this.addSlice(SliceType.WINDOW, 192);
-    this.addSlice(SliceType.DECORATION, 192);
-    this.addSlice(SliceType.STEP, 256);
-    this.addSlice(SliceType.WINDOW, 256);
-    this.addSlice(SliceType.BACK, 256);
-};
-
-Walls.prototype.createTestGap = function () {
-    this.addSlice(SliceType.GAP);
-};
-
-
-Walls.prototype.createTestMap = function () {
-    for (let i = 0; i < 10; i++) {
-        this.createTestWallSpan();
-        this.createTestGap();
-        this.createTestSteppedWallSpan();
-        this.createTestGap();
-    }
-};
-
