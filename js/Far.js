@@ -13,7 +13,7 @@ function Far() {
 
 Far.prototype = Object.create(PIXI.extras.TilingSprite.prototype);
 
-Far.DELTA_X = 0.128;
+Far.DELTA_X = 0.064;
 
 Far.prototype.setViewportX = function (newViewportX) {
     let distanceTravelled = newViewportX - this.viewportX;
